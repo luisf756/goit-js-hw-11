@@ -74,7 +74,12 @@ function onSubmit(e) {
   clearArticlesContainer();
   btnSubmit.disabled = true;
   const submitValue = e.currentTarget.searchQuery.value.trim();
+  console.log()
+  galleryApi.query = e.currentTarget.searchQuery.value.trim();
   if (submitValue === '') {
+    Notify.warning(
+        'Sorry, No data.'
+      );
     return;
   } else {
     searchResult(submitValue);
@@ -86,7 +91,8 @@ function onSubmit(e) {
 const searchResult = async submitValue => {
   page = 1;
   try {
-    const respons = await galleryApi.fetchGallery()//(submitValue, page);
+    
+    const respons = await galleryApi.fetchGallery()//submitValue, page);
     if (respons.data.totalHits === 0) {
       Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'

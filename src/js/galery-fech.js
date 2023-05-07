@@ -12,7 +12,7 @@ export default class GalleryApi {
     this.searchQuery = '';
   }
 
-  async fetchGallery() {
+  async fetchGallery(searchQuery) {
     const searchParams = `${this.image_type}&${this.orientation}&${this.safesearch}&page=${this.page}&per_page=${this.per_page}`;
     const dataResponse = await axios.get(`${this.BASE_URL}${this.API_KEY}&q=${this.searchQuery}&${searchParams}`);
 
