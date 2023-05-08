@@ -91,7 +91,7 @@ function onSubmit(e) {
 const searchResult = async submitValue => {
   page = 1;
   try {
-    
+
     const respons = await galleryApi.fetchGallery()//submitValue, page);
     if (respons.data.totalHits === 0) {
       Notify.warning(
@@ -120,8 +120,8 @@ btnLoadMore.style.opacity = '0';
 async function addEltoGallery(submitValue) {
   page += 1;
   try {
-    if (Math.ceil(pages) >= page) {
-      const respons = await galleryApi(input.value, page);
+    if (Math.ceil(pages) >= page) {        
+      const respons = await galleryApi.fetchGallery();
       addPhotoToGallery(respons.data.hits);
 
       btnLoadMore.disabled = false;
